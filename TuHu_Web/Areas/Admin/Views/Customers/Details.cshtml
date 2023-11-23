@@ -1,0 +1,51 @@
+﻿@model TuHu_Web.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_Customer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_Customer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Customer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Customer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone_Number_Customer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone_Number_Customer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Customer }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,51 @@
+﻿@model TuHu_Web.Models.Sales_Bill_Details
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sales_Bill_Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bill_Of_Sale.Id_Bill_Of_Sale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bill_Of_Sale.Id_Bill_Of_Sale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Name_Product)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Name_Product)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price_Bill_Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price_Bill_Details)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Sales_Bill_Details }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

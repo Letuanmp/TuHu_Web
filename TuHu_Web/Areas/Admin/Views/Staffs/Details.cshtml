@@ -1,0 +1,67 @@
+﻿@model TuHu_Web.Models.Staff
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Staff</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_Of_Staff)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_Of_Staff)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone_Number_Of_Staff)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone_Number_Of_Staff)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Of_Birth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Of_Birth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Native_Place)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Native_Place)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Accommodation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accommodation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Staff }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

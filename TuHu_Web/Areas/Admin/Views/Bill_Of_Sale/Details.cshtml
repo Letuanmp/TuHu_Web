@@ -1,0 +1,43 @@
+﻿@model TuHu_Web.Models.Bill_Of_Sale
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bill_Of_Sale</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Name_Customer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Name_Customer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff.Name_Of_Staff)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff.Name_Of_Staff)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_And_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_And_Time)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Bill_Of_Sale }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

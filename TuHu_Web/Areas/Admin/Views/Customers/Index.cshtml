@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TuHu_Web.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name_Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address_Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone_Number_Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name_Customer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address_Customer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone_Number_Customer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Customer }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_Customer }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Customer })
+        </td>
+    </tr>
+}
+
+</table>

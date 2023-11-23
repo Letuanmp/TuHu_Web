@@ -1,0 +1,72 @@
+﻿@model IEnumerable<TuHu_Web.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h2 style=" font-size:40px;text-align:center">Sản Phẩm</h2>
+
+
+<table class="table" style="margin-left: 100px; border: 2px solid black; width: 80% ">
+    <tr style="border: 2px solid black; font-size:15px">
+        <th style="border-right: 2px solid black ">
+            <div>Tên Sản Phẩm</div>
+        </th>
+        <th style="border-right: 2px solid black ">
+            <div>Giá Sản Phẩm</div>
+        </th>
+        <th style="border-right: 2px solid black ">
+            <div>Số Lượng Tồn</div>
+
+        </th>
+        <th style="border-right: 2px solid black ">
+            <div>Chi Tiết</div>
+        </th>
+        <th style="border-right: 2px solid black ">
+            <div>Hình Ảnh</div>
+        </th>
+        <th>
+            <div>Chức năng</div>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="border-right: 2px solid black; border-bottom: 2px solid black ">
+                @Html.DisplayFor(modelItem => item.Name_Product)
+            </td>
+            <td style="border-right: 2px solid black; border-bottom: 2px solid black ">
+                @Html.DisplayFor(modelItem => item.Price_Product)
+            </td>
+            <td style="border-right: 2px solid black; border-bottom: 2px solid black ">
+                @Html.DisplayFor(modelItem => item.Inventory_Number)
+            </td>
+            <td style="border-right: 2px solid black; border-bottom: 2px solid black ">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td style="border-right: 2px solid black; border-bottom: 2px solid black ">
+                <img src="~/Uploads/@item.Image" style="width: 100px; height:100px" />
+            </td>
+            <td style="border-right: 2px solid black; border-bottom: 2px solid black ">
+                <button>
+                    @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.Id_Product })
+                </button>
+                <button>
+
+                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.Id_Product })
+                </button>
+                <button>
+
+                    @Html.ActionLink("Xoá", "Delete", new { id = item.Id_Product })
+                </button>
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+<button style="margin-bottom: 5px; background-color: aquamarine; font-size: 15px; border-radius: 5px; width: 80px; height: 30px; margin-left: 100px; color: black">
+    @Html.ActionLink("Thêm", "Create")
+</button>

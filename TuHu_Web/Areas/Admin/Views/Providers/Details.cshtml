@@ -1,0 +1,51 @@
+﻿@model TuHu_Web.Models.Provider
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Provider</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_Provider)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_Provider)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Provider)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Provider)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone_Number_Provider)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone_Number_Provider)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email_Provider)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email_Provider)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Provider }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

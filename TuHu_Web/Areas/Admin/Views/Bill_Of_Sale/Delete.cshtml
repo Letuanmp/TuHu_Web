@@ -1,0 +1,49 @@
+﻿@model TuHu_Web.Models.Bill_Of_Sale
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Bill_Of_Sale</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Name_Customer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Name_Customer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff.Name_Of_Staff)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff.Name_Of_Staff)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_And_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_And_Time)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
