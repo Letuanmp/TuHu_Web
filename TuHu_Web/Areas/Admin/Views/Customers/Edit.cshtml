@@ -5,45 +5,46 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2 style="text-align:center; font-size:40px; margin-bottom: 30px">Chỉnh sửa thông tin khách hàng</h2>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Customer</h4>
+
+    <div class="form-horizontal" style=" margin-left: 100px; border: 2px solid black; width: 90% ">
+        <h4 style="margin-left:10px; font-size: 15px; color:gray">Khách hàng</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id_Customer)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Name_Customer, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Tên khách hàng</div>
+            <div class="col-md-10" style="width:80%">
                 @Html.EditorFor(model => model.Name_Customer, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name_Customer, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Address_Customer, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Địa chỉ</div>
+            <div class="col-md-10" style="width:80%">
                 @Html.EditorFor(model => model.Address_Customer, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Address_Customer, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Phone_Number_Customer, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Số điện thoại</div>
+            <div class="col-md-10" style="width:80%">
                 @Html.EditorFor(model => model.Phone_Number_Customer, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Phone_Number_Customer, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Email</div>
+            <div class="col-md-10" style="width:80%">
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
@@ -51,12 +52,13 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Lưu" class="btn btn-default" style="background-color:aquamarine; color: black; margin-top:20px" />
             </div>
         </div>
     </div>
+    <div style="margin: 10px 0px 0px 10px">
+        <button>
+            @Html.ActionLink("Trở về danh sách", "Index")
+        </button>
+    </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

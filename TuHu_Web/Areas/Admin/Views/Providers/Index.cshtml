@@ -5,48 +5,60 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 style=" font-size:40px;text-align:center">Nhà Cung Cấp</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
+
+<table class="table" ; style="margin-left: 100px; border: 2px solid black; width: 80% ">
+    <tr style="border: 2px solid black; font-size:15px">
         <th>
-            @Html.DisplayNameFor(model => model.Name_Provider)
+            <div>Tên Nhà Cung Cấp</div>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address_Provider)
+            <div>Địa Chỉ</div>
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Phone_Number_Provider)
+            <div>Số Điện Thoại</div>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email_Provider)
+            <div>Email</div>
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name_Provider)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address_Provider)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone_Number_Provider)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email_Provider)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Provider }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_Provider }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Provider })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr style="width: 10px">
+            <td style="border-bottom: 2px solid black">
+                @Html.DisplayFor(modelItem => item.Name_Provider)
+            </td>
+            <td style="border-bottom: 2px solid black">
+                @Html.DisplayFor(modelItem => item.Address_Provider)
+            </td>
+            <td style="border-bottom: 2px solid black">
+                @Html.DisplayFor(modelItem => item.Phone_Number_Provider)
+            </td>
+            <td style="border-bottom: 2px solid black">
+                @Html.DisplayFor(modelItem => item.Email_Provider)
+            </td>
+            <td style="border-bottom: 2px solid black">
+                <button>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.Id_Provider }) 
+
+                </button>
+                <button>
+                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.Id_Provider }) 
+
+                </button>
+                <button>
+                    @Html.ActionLink("Xoá", "Delete", new { id = item.Id_Provider })
+
+                </button>
+            </td>
+        </tr>
+    }
 
 </table>
+<button style="margin-bottom: 5px; background-color: aquamarine; font-size: 15px; border-radius: 5px; width: 80px; height: 30px; margin-left: 100px; color: black">
+    @Html.ActionLink("Thêm", "Create")
+</button>

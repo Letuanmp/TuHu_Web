@@ -5,39 +5,44 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 style="text-align:center; font-size:40px; margin-bottom: 30px">Chi tiết đơn bán</h2>
+
 
 <div>
-    <h4>Bill_Of_Sale</h4>
+    <h4 style="margin-left: 30px">Đơn bán</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Customer.Name_Customer)
+    <dl class="dl-horizontal" style=" margin-left: 100px; border: 2px solid black; width: 90% ">
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Tên khách hàng</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Customer.Name_Customer)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Staff.Name_Of_Staff)
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Tên nhân viên</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Staff.Name_Of_Staff)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date_And_Time)
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Ngày và giờ</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Date_And_Time)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Bill_Of_Sale }) |
-    @Html.ActionLink("Back to List", "Index")
+<p style="margin-left: 30px">
+    <button style="background-color:aquamarine">
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Id_Bill_Of_Sale })
+    </button>
+    <button>
+        @Html.ActionLink("Trở về danh sách", "Index")
+    </button>
 </p>

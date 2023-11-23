@@ -5,60 +5,69 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 style=" font-size:40px;text-align:center">Nhân Viên</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
+
+<table class="table" style="margin-left: 100px; border: 2px solid black; width: 80% ">
+    <tr style="border: 2px solid black; font-size:15px">
         <th>
-            @Html.DisplayNameFor(model => model.Name_Of_Staff)
+            <div>Tên Nhân Viên</div>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Phone_Number_Of_Staff)
+            <div>Số Điện Thoại</div>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date_Of_Birth)
+            <div>Ngày Sinh</div>
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Native_Place)
+            <div>Quê Quán</div>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Age)
+            <div>Tuổi</div>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Accommodation)
+            <div>Chỗ Ở Hiện Tại</div>
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name_Of_Staff)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone_Number_Of_Staff)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date_Of_Birth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Native_Place)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Age)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Accommodation)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Staff }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_Staff }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Staff })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr style="width: 10px">
+            <td style="border-bottom: 2px solid black">
+                @Html.DisplayFor(modelItem => item.Name_Of_Staff)
+            </td>
+            <td style="border-bottom: 2px solid black">
+                @Html.DisplayFor(modelItem => item.Phone_Number_Of_Staff)
+            </td>
+            <td style="border-bottom: 2px solid black">
+                @Html.DisplayFor(modelItem => item.Date_Of_Birth)
+            </td>
+            <td style="border-bottom: 2px solid black">
+                @Html.DisplayFor(modelItem => item.Native_Place)
+            </td>
+            <td style="border-bottom: 2px solid black">
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td style="border-bottom: 2px solid black">
+                @Html.DisplayFor(modelItem => item.Accommodation)
+            </td>
+            <td style="border-bottom: 2px solid black">
+                <button>
+                    @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.Id_Staff })
+                </button>
+                <button>
+                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.Id_Staff })
+                </button>
+                <button>
+                    @Html.ActionLink("Xoá", "Delete", new { id = item.Id_Staff })
+                </button>
+            </td>
+        </tr>
+    }
 
 </table>
+<button style="margin-bottom: 5px; background-color: aquamarine; font-size: 15px; border-radius: 5px; width: 80px; height: 30px; margin-left: 100px; color: black">
+    @Html.ActionLink("Thêm", "Create")
+</button>

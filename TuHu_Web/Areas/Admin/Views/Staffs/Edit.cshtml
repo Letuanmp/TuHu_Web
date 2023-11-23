@@ -5,20 +5,21 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2 style="text-align:center; font-size:40px; margin-bottom: 30px">Chỉnh sửa thông tin nhân viên</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Staff</h4>
+
+    <div class="form-horizontal" style=" margin-left: 100px; border: 2px solid black; width: 90% ">
+        <h4 style="margin-left:10px; font-size: 15px; color:gray">Nhân Viên</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id_Staff)
 
+
         <div class="form-group">
-            @Html.LabelFor(model => model.Name_Of_Staff, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Tên Nhân Viên</div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name_Of_Staff, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name_Of_Staff, "", new { @class = "text-danger" })
@@ -26,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Phone_Number_Of_Staff, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Số Điện Thoại</div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Phone_Number_Of_Staff, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Phone_Number_Of_Staff, "", new { @class = "text-danger" })
@@ -34,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Date_Of_Birth, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Ngày Sinh</div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Date_Of_Birth, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Date_Of_Birth, "", new { @class = "text-danger" })
@@ -42,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Native_Place, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Quê Quán</div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Native_Place, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Native_Place, "", new { @class = "text-danger" })
@@ -50,7 +51,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Tuổi</div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
@@ -58,21 +59,23 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Accommodation, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Chỗ Ở Hiện Tại</div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Accommodation, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Accommodation, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Lưu" class="btn btn-default" style="background-color:aquamarine; color: black; margin-top:20px" />
             </div>
         </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+    <div style="margin: 10px 0px 0px 10px">
+        <button>
+            @Html.ActionLink("Trở Về Danh Sách", "Index")
+        </button>
+    </div>
+}

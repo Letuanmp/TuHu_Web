@@ -5,42 +5,50 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 style=" font-size:40px;text-align:center">Đơn Bán</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
+<table class="table" style="margin-left: 100px; border: 2px solid black; width: 80% ">
+    <tr style="border: 2px solid black; font-size:15px">
         <th>
-            @Html.DisplayNameFor(model => model.Customer.Name_Customer)
+            <div>Tên khách hàng</div>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Staff.Name_Of_Staff)
+            <div>Tên nhân viên</div>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date_And_Time)
+            <div>Thời gian</div>
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.Name_Customer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Staff.Name_Of_Staff)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date_And_Time)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Bill_Of_Sale }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_Bill_Of_Sale }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Bill_Of_Sale })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr style="width: 10px">
+            <td style="border-bottom: 2px solid black">
+                @Html.DisplayFor(modelItem => item.Customer.Name_Customer)
+            </td>
+            <td style="border-bottom: 2px solid black">
+                @Html.DisplayFor(modelItem => item.Staff.Name_Of_Staff)
+            </td>
+            <td style="border-bottom: 2px solid black">
+                @Html.DisplayFor(modelItem => item.Date_And_Time)
+            </td>
+            <td style="border-bottom: 2px solid black">
+                <button>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.Id_Bill_Of_Sale })
+                </button>
+                <button>
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.Id_Bill_Of_Sale })
+                </button>
+                <button>
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.Id_Bill_Of_Sale })
+                </button>
+            </td>
+        </tr>
+    }
 
 </table>
+<button style="margin-bottom: 5px; background-color: aquamarine; font-size: 15px; border-radius: 5px; width: 80px; height: 30px; margin-left: 100px; color: black">
+
+    @Html.ActionLink("Thêm", "Create")
+    </button>

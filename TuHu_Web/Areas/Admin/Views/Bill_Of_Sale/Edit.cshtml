@@ -5,50 +5,53 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2 style="text-align:center; font-size:40px; margin-bottom: 30px">Chỉnh sửa thông tin đơn bán</h2>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Bill_Of_Sale</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id_Bill_Of_Sale)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Id_Staff, "Id_Staff", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Id_Staff", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Id_Staff, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-horizontal" style=" margin-left: 100px; border: 2px solid black; width: 90% ">
+    <h4 style="margin-left:10px; font-size: 15px; color:gray">Đơn bán</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id_Bill_Of_Sale)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Id_Customer, "Id_Customer", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Id_Customer", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Id_Customer, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Date_And_Time, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Date_And_Time, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Date_And_Time, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+    <div class="form-group">
+        <div class="control-label col-md-2" style="font-size: 20px; text-align:center">ID Nhân viên</div>
+        <div class="col-md-10">
+            @Html.DropDownList("Id_Staff", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Id_Staff, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2" style="font-size: 20px; text-align:center">ID khách hàng</div>
+        <div class="col-md-10">
+            @Html.DropDownList("Id_Customer", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Id_Customer, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Ngày và giờ</div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Date_And_Time, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Date_And_Time, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Lưu thay đổi" class="btn btn-default" style="background-color:aquamarine; color: black; margin-top:20px" />
+        </div>
+    </div>
+</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div style="margin-top: 20px; margin-left:15px">
+    <button>
+        @Html.ActionLink("Trở về trang danh sách", "Index")
+    </button>
 </div>

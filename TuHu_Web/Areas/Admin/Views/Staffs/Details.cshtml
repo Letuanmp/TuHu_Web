@@ -5,63 +5,68 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 style="text-align:center; font-size:40px; margin-bottom: 30px">Chi tiết thông tin nhân viên</h2>
 
 <div>
-    <h4>Staff</h4>
+    <h4 style="margin-left: 30px">Nhân Viên</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name_Of_Staff)
+    <dl class="dl-horizontal" style=" margin-left: 100px; border: 2px solid black; width: 90% ">
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Tên Nhân Viên</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Name_Of_Staff)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone_Number_Of_Staff)
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Số Điện Thoại</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Phone_Number_Of_Staff)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date_Of_Birth)
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Ngày Sinh</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Date_Of_Birth)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Native_Place)
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Quê Quán</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Native_Place)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Age)
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Tuổi</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Age)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Accommodation)
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Chỗ Ở Hiện Tại</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Accommodation)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Staff }) |
-    @Html.ActionLink("Back to List", "Index")
+
+<p style="margin-left: 30px">
+    <button style="background-color:aquamarine">
+        @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = Model.Id_Staff })
+    </button>
+    <button>
+        @Html.ActionLink("Trở Về Danh Sách", "Index")
+    </button>
 </p>

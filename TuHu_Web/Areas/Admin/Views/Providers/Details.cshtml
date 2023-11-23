@@ -5,47 +5,51 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 style="text-align:center; font-size:40px; margin-bottom: 30px">Chi tiết nhà cung cấp</h2>
 
 <div>
-    <h4>Provider</h4>
+    <h4 style="margin-left: 30px">Nhà Cung Cấp</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name_Provider)
+    <dl class="dl-horizontal" style=" margin-left: 100px; border: 2px solid black; width: 90% ">
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Tên Nhà Cung Cấp</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Name_Provider)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address_Provider)
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Địa chỉ nhà cung cấp</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Address_Provider)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone_Number_Provider)
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Số điện thoại</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Phone_Number_Provider)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email_Provider)
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Email</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Email_Provider)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Provider }) |
-    @Html.ActionLink("Back to List", "Index")
+<p style="margin-left: 30px">
+        <button style="background-color:aquamarine">
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Id_Provider })
+        </button>
+        <button>
+            @Html.ActionLink("Trở về trang danh sách", "Index")
+        </button>
 </p>

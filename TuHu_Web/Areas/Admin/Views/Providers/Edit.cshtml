@@ -5,58 +5,62 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2 style="text-align:center; font-size:40px; margin-bottom: 30px">Chỉnh sửa thông tin nhà cung cấp</h2>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Provider</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id_Provider)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name_Provider, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name_Provider, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name_Provider, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-horizontal" style=" margin-left: 100px; border: 2px solid black; width: 90% ">
+    <h4 style="margin-left:10px; font-size: 15px; color:gray">Nhà Cung Cấp</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id_Provider)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Address_Provider, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Address_Provider, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Address_Provider, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Tên nhà cung cấp</div>
+        <div class="col-md-10" style="width:80%">
+            @Html.EditorFor(model => model.Name_Provider, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name_Provider, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Phone_Number_Provider, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Phone_Number_Provider, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Phone_Number_Provider, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Địa chỉ</div>
+        <div class="col-md-10" style="width:80%">
+            @Html.EditorFor(model => model.Address_Provider, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Address_Provider, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email_Provider, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email_Provider, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email_Provider, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Số điện thoại</div>
+        <div class="col-md-10" style="width:80%">
+            @Html.EditorFor(model => model.Phone_Number_Provider, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Phone_Number_Provider, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+    <div class="form-group">
+        <div class="control-label col-md-2" style="font-size: 20px; text-align:center">Email</div>
+        <div class="col-md-10" style="width:80%">
+            @Html.EditorFor(model => model.Email_Provider, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email_Provider, "", new { @class = "text-danger" })
         </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Lưu thay đổi" class="btn btn-default" style="background-color:aquamarine; color: black; margin-top:20px" />
+        </div>
+    </div>
+</div>
+    <div style="margin: 10px 0px 0px 10px">
+        <button>
+            @Html.ActionLink("Trở về trang danh sách", "Index")
+        </button>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+

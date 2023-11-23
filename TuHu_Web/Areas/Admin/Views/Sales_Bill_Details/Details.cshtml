@@ -5,47 +5,53 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 style="text-align:center; font-size:40px; margin-bottom: 30px">Thông tin chi tiết hóa đơn</h2>
+
 
 <div>
-    <h4>Sales_Bill_Details</h4>
+    <h4 style="margin-left: 30px">Chi tiết hóa đơn</h4>
+
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Bill_Of_Sale.Id_Bill_Of_Sale)
+    <dl class="dl-horizontal" style=" margin-left: 100px; border: 2px solid black; width: 90% ">
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>ID đơn bán</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Bill_Of_Sale.Id_Bill_Of_Sale)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Product.Name_Product)
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Tên sản phẩm</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Product.Name_Product)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Amount)
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Số lượng</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Amount)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price_Bill_Details)
+        <dt style="border: 2px solid black; text-align:left; padding-left:5px">
+            <div>Tổng giá</div>
         </dt>
 
-        <dd>
+        <dd style="border: 2px solid black; padding-left:5px">
             @Html.DisplayFor(model => model.Price_Bill_Details)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Sales_Bill_Details }) |
-    @Html.ActionLink("Back to List", "Index")
+<p style="margin-left: 30px">
+    <button style="background-color:aquamarine">
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Id_Sales_Bill_Details })
+    </button>
+    <button>
+        @Html.ActionLink("Trở về danh sách", "Index")
+    </button>
 </p>
