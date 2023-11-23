@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using TuHu_Web.Models;
 
@@ -18,9 +19,75 @@ namespace TuHu_Web.Areas.Admin.Controllers
         private Model1 db = new Model1();
 
         // GET: Admin/Products
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, bool isReset = false)
         {
-            return View(db.Products.ToList());
+            //if (isReset) Session["isSearchingFood"] = false;
+
+            List<Product> foods = new List<Product>();
+            //bool isSearching = Session["isSearchingFood"] != null ? (bool)Session["isSearchingFood"] : false;
+
+            //var selectedCategoryOption = Request.QueryString["selectedCategoryOption"];
+            //var selectedOptionPrice = Request.QueryString["selectedOptionPrice"];
+            //var checkSale = Request.QueryString["checkSale"];
+            //var valueSearch = Request.QueryString["valueSearch"];
+
+            foods = db.Products.ToList();
+            //ViewBag.foodCategories = db.foodCategories.ToList();
+
+            //if (!isSearching)
+            //{
+            //    if (!string.IsNullOrEmpty(selectedOptionPrice) || !string.IsNullOrEmpty(valueSearch) || !string.IsNullOrEmpty(checkSale) || !string.IsNullOrEmpty(selectedCategoryOption))
+            //    {
+            //        isSearching = true;
+            //        Session["isSearchingFood"] = isSearching;
+            //        foods = SrearchFood(foods, selectedCategoryOption, selectedOptionPrice, valueSearch, checkSale);
+            //    }
+            //}
+
+            //if (isSearching)
+            //{
+            //    foods = Session["listFood"] as List<food>;
+            //    if (foods.ToList().Count() == 0) Session["isSearchingFood"] = false;
+            //    foods = SrearchFood(foods, selectedCategoryOption, selectedOptionPrice, valueSearch, checkSale);
+            //}
+            var valueSearch = Request.QueryString["valueSearch"];
+            if (!string.IsNullOrEmpty(valueSearch))
+            {
+                foods = foods.FindAll(x =>
+
+                   x.Name_Product != null && x.Name_Product.ToLower().Contains(valueSearch.Trim().ToLower())
+
+                );
+            }
+
+
+            int itemsPerPage = 4;
+            int totalItems = foods.Count();
+            int totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
+            page = Math.Max(1, Math.Min(page, totalPages));
+
+            var startIndex = (page - 1) * itemsPerPage;
+            var endIndex = Math.Min(startIndex + itemsPerPage - 1, totalItems - 1);
+
+            List<Product> foodPage;
+
+            if (startIndex < 0 || startIndex >= totalItems)
+            {
+                foodPage = null;
+            }
+            else
+            {
+                foodPage = foods.GetRange(startIndex, endIndex - startIndex + 1);
+            }
+
+            ViewBag.currentPage = page;
+            Session["currentPageFood"] = page;
+            ViewBag.totalPages = totalPages;
+
+
+
+
+            return View(foodPage);
         }
 
         // GET: Admin/Products/Details/5
