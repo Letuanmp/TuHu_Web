@@ -15,10 +15,49 @@ namespace TuHu_Web.Areas.Admin.Controllers
         private Model1 db = new Model1();
 
         // GET: Admin/Bill_Of_Sale
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, bool isReset = false)
         {
-            var bill_Of_Sale = db.Bill_Of_Sale.Include(b => b.Customer).Include(b => b.Staff);
-            return View(bill_Of_Sale.ToList());
+            List<Bill_Of_Sale> cus = new List<Bill_Of_Sale>();
+
+            cus = db.Bill_Of_Sale.ToList();
+            var valueSearch = Request.QueryString["valueSearch"];
+            if (!string.IsNullOrEmpty(valueSearch))
+            {
+                cus = cus.FindAll(x =>
+
+                   x.Customer.Name_Customer != null && x.Customer.Name_Customer.ToLower().Contains(valueSearch.Trim().ToLower())
+
+                );
+            }
+
+
+            int itemsPerPage = 4;
+            int totalItems = cus.Count();
+            int totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
+            page = Math.Max(1, Math.Min(page, totalPages));
+
+            var startIndex = (page - 1) * itemsPerPage;
+            var endIndex = Math.Min(startIndex + itemsPerPage - 1, totalItems - 1);
+
+            List<Bill_Of_Sale> foodPage;
+
+            if (startIndex < 0 || startIndex >= totalItems)
+            {
+                foodPage = null;
+            }
+            else
+            {
+                foodPage = cus.GetRange(startIndex, endIndex - startIndex + 1);
+            }
+
+            ViewBag.currentPage = page;
+            Session["currentPageFood"] = page;
+            ViewBag.totalPages = totalPages;
+
+
+
+
+            return View(foodPage);
         }
 
         // GET: Admin/Bill_Of_Sale/Details/5

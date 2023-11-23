@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using TuHu_Web.Models;
 
 namespace TuHu_Web.Areas.Admin.Controllers
@@ -16,10 +17,49 @@ namespace TuHu_Web.Areas.Admin.Controllers
         private Model1 db = new Model1();
 
         // GET: Admin/Logins
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, bool isReset = false)
         {
-            var logins = db.Logins.Include(l => l.Position);
-            return View(logins.ToList());
+            List<Login> login = new List<Login>();
+
+            login = db.Logins.ToList();
+            var valueSearch = Request.QueryString["valueSearch"];
+            if (!string.IsNullOrEmpty(valueSearch))
+            {
+                login = login.FindAll(x =>
+
+                   x.UserName != null && x.UserName.ToLower().Contains(valueSearch.Trim().ToLower())
+
+                );
+            }
+
+
+            int itemsPerPage = 4;
+            int totalItems = login.Count();
+            int totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
+            page = Math.Max(1, Math.Min(page, totalPages));
+
+            var startIndex = (page - 1) * itemsPerPage;
+            var endIndex = Math.Min(startIndex + itemsPerPage - 1, totalItems - 1);
+
+            List<Login> foodPage;
+
+            if (startIndex < 0 || startIndex >= totalItems)
+            {
+                foodPage = null;
+            }
+            else
+            {
+                foodPage = login.GetRange(startIndex, endIndex - startIndex + 1);
+            }
+
+            ViewBag.currentPage = page;
+            Session["currentPageFood"] = page;
+            ViewBag.totalPages = totalPages;
+
+
+
+
+            return View(foodPage);
         }
 
         // GET: Admin/Logins/Details/5

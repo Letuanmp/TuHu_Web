@@ -15,9 +15,51 @@ namespace TuHu_Web.Areas.Admin.Controllers
         private Model1 db = new Model1();
 
         // GET: Admin/Staffs
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, bool isReset = false)
         {
-            return View(db.Staffs.ToList());
+
+
+            List<Staff> foods = new List<Staff>();
+
+            foods = db.Staffs.ToList();
+            var valueSearch = Request.QueryString["valueSearch"];
+            if (!string.IsNullOrEmpty(valueSearch))
+            {
+                foods = foods.FindAll(x =>
+
+                   x.Name_Of_Staff != null && x.Name_Of_Staff.ToLower().Contains(valueSearch.Trim().ToLower())
+
+                );
+            }
+
+
+            int itemsPerPage = 4;
+            int totalItems = foods.Count();
+            int totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
+            page = Math.Max(1, Math.Min(page, totalPages));
+
+            var startIndex = (page - 1) * itemsPerPage;
+            var endIndex = Math.Min(startIndex + itemsPerPage - 1, totalItems - 1);
+
+            List<Staff> foodPage;
+
+            if (startIndex < 0 || startIndex >= totalItems)
+            {
+                foodPage = null;
+            }
+            else
+            {
+                foodPage = foods.GetRange(startIndex, endIndex - startIndex + 1);
+            }
+
+            ViewBag.currentPage = page;
+            Session["currentPageFood"] = page;
+            ViewBag.totalPages = totalPages;
+
+
+
+
+            return View(foodPage);
         }
 
         // GET: Admin/Staffs/Details/5

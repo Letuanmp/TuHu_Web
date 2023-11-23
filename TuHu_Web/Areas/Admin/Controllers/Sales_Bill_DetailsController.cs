@@ -15,10 +15,51 @@ namespace TuHu_Web.Areas.Admin.Controllers
         private Model1 db = new Model1();
 
         // GET: Admin/Sales_Bill_Details
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, bool isReset = false)
         {
-            var sales_Bill_Details = db.Sales_Bill_Details.Include(s => s.Bill_Of_Sale).Include(s => s.Product);
-            return View(sales_Bill_Details.ToList());
+
+
+            List<Sales_Bill_Details> foods = new List<Sales_Bill_Details>();
+
+            foods = db.Sales_Bill_Details.ToList();
+            var valueSearch = Request.QueryString["valueSearch"];
+            if (!string.IsNullOrEmpty(valueSearch))
+            {
+                foods = foods.FindAll(x =>
+
+                   x.Bill_Of_Sale.Customer.Name_Customer != null && x.Bill_Of_Sale.Customer.Name_Customer.ToLower().Contains(valueSearch.Trim().ToLower())
+
+                );
+            }
+
+
+            int itemsPerPage = 4;
+            int totalItems = foods.Count();
+            int totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
+            page = Math.Max(1, Math.Min(page, totalPages));
+
+            var startIndex = (page - 1) * itemsPerPage;
+            var endIndex = Math.Min(startIndex + itemsPerPage - 1, totalItems - 1);
+
+            List<Sales_Bill_Details> foodPage;
+
+            if (startIndex < 0 || startIndex >= totalItems)
+            {
+                foodPage = null;
+            }
+            else
+            {
+                foodPage = foods.GetRange(startIndex, endIndex - startIndex + 1);
+            }
+
+            ViewBag.currentPage = page;
+            Session["currentPageFood"] = page;
+            ViewBag.totalPages = totalPages;
+
+
+
+
+            return View(foodPage);
         }
 
         // GET: Admin/Sales_Bill_Details/Details/5

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using TuHu_Web.Models;
 
 namespace TuHu_Web.Areas.Admin.Controllers
@@ -15,9 +16,49 @@ namespace TuHu_Web.Areas.Admin.Controllers
         private Model1 db = new Model1();
 
         // GET: Admin/Customers
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, bool isReset = false)
         {
-            return View(db.Customers.ToList());
+            List<Customer> cus = new List<Customer>();
+
+            cus = db.Customers.ToList();
+            var valueSearch = Request.QueryString["valueSearch"];
+            if (!string.IsNullOrEmpty(valueSearch))
+            {
+                cus = cus.FindAll(x =>
+
+                   x.Name_Customer != null && x.Name_Customer.ToLower().Contains(valueSearch.Trim().ToLower())
+
+                );
+            }
+
+
+            int itemsPerPage = 4;
+            int totalItems = cus.Count();
+            int totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
+            page = Math.Max(1, Math.Min(page, totalPages));
+
+            var startIndex = (page - 1) * itemsPerPage;
+            var endIndex = Math.Min(startIndex + itemsPerPage - 1, totalItems - 1);
+
+            List<Customer> foodPage;
+
+            if (startIndex < 0 || startIndex >= totalItems)
+            {
+                foodPage = null;
+            }
+            else
+            {
+                foodPage = cus.GetRange(startIndex, endIndex - startIndex + 1);
+            }
+
+            ViewBag.currentPage = page;
+            Session["currentPageFood"] = page;
+            ViewBag.totalPages = totalPages;
+
+
+
+
+            return View(foodPage);
         }
 
         // GET: Admin/Customers/Details/5

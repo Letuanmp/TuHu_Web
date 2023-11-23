@@ -21,35 +21,11 @@ namespace TuHu_Web.Areas.Admin.Controllers
         // GET: Admin/Products
         public ActionResult Index(int page = 1, bool isReset = false)
         {
-            //if (isReset) Session["isSearchingFood"] = false;
+            
 
             List<Product> foods = new List<Product>();
-            //bool isSearching = Session["isSearchingFood"] != null ? (bool)Session["isSearchingFood"] : false;
-
-            //var selectedCategoryOption = Request.QueryString["selectedCategoryOption"];
-            //var selectedOptionPrice = Request.QueryString["selectedOptionPrice"];
-            //var checkSale = Request.QueryString["checkSale"];
-            //var valueSearch = Request.QueryString["valueSearch"];
-
+           
             foods = db.Products.ToList();
-            //ViewBag.foodCategories = db.foodCategories.ToList();
-
-            //if (!isSearching)
-            //{
-            //    if (!string.IsNullOrEmpty(selectedOptionPrice) || !string.IsNullOrEmpty(valueSearch) || !string.IsNullOrEmpty(checkSale) || !string.IsNullOrEmpty(selectedCategoryOption))
-            //    {
-            //        isSearching = true;
-            //        Session["isSearchingFood"] = isSearching;
-            //        foods = SrearchFood(foods, selectedCategoryOption, selectedOptionPrice, valueSearch, checkSale);
-            //    }
-            //}
-
-            //if (isSearching)
-            //{
-            //    foods = Session["listFood"] as List<food>;
-            //    if (foods.ToList().Count() == 0) Session["isSearchingFood"] = false;
-            //    foods = SrearchFood(foods, selectedCategoryOption, selectedOptionPrice, valueSearch, checkSale);
-            //}
             var valueSearch = Request.QueryString["valueSearch"];
             if (!string.IsNullOrEmpty(valueSearch))
             {

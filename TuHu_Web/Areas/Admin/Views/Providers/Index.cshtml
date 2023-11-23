@@ -6,6 +6,18 @@
 }
 
 <h2 style=" font-size:40px;text-align:center">Nhà Cung Cấp</h2>
+@using (Html.BeginForm("Index", "Providers", FormMethod.Get, new { }))
+{
+    <div class="input-group" style="margin-top: 20px;">
+        <input type="text" name="valueSearch" class="form-control" placeholder="Nhập tên nhà cung cấp muốn tìm...">
+        <span class="input-group-btn">
+            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+        </span>
+    </div>
+}
+<button class="btn" style="margin-left: 10px; color: aliceblue;">
+    @Html.ActionLink("Thêm", "Create", null, new { @class = "btn btn-adn text-danger" })
+</button>
 
 
 <table class="table" ; style="margin-left: 100px; border: 2px solid black; width: 80% ">
@@ -43,11 +55,11 @@
             </td>
             <td style="border-bottom: 2px solid black">
                 <button>
-                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.Id_Provider }) 
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.Id_Provider })
 
                 </button>
                 <button>
-                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.Id_Provider }) 
+                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.Id_Provider })
 
                 </button>
                 <button>
@@ -59,6 +71,29 @@
     }
 
 </table>
-<button style="margin-bottom: 5px; background-color: aquamarine; font-size: 15px; border-radius: 5px; width: 80px; height: 30px; margin-left: 100px; color: black">
-    @Html.ActionLink("Thêm", "Create")
-</button>
+<div style="background-color: white; display: flex; justify-content: space-between; height: 40px; align-items: center; padding: 20px; border-radius: 4px;">
+    <div style="display:flex; column-gap: 10px">
+        <a href="@Url.Action("Index", "Providers", new {  page = 1})" class="btn btn-info">Trang Đầu</a>
+        <a href="@Url.Action("Index", "Providers", new {  page = Convert.ToInt32(ViewBag.totalPages)})" class="btn btn-info">Trang Cuối</a>
+        <a href="@Url.Action("Index", "Providers", new {  page = Convert.ToInt32(ViewBag.currentPage) + 1})" class="btn btn-info">Trang Tiếp</a>
+
+    </div>
+    <ul style="display: flex; column-gap: 10px; align-items: center">
+        <span style="margin-top: 5px; color: red; font-size: large; font-weight: 600 ">Trang: </span>
+        <span style="margin-top: 5px; color: red; font-size: large; font-weight: 600 ">Trang: </span>
+        @{
+            for (int i = 1; i <= Convert.ToInt32(ViewBag.totalPages); i++)
+            {
+                if (i == Convert.ToInt32(ViewBag.currentPage))
+                {
+                    <li style="list-style: none; cursor: pointer; margin-top: 5px;"><a style="color: red; font-size: large">@i</a></li>
+                }
+                else
+                {
+                    <li style="list-style: none; cursor: pointer; margin-top: 5px;"><a href="@Url.Action("Index", "Providers", new {  page = i})" style="color: #333; font-size: large">@i</a></li>
+                }
+            }
+        }
+    </ul>
+</div>
+
