@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Giỏ hàng";
+}
+
+@*<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_styles.css">
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_responsive.css">*@
+
+<div class="container product_section_container" style="margin-top: 200px;">
+    <div class="row">
+        <div class="col product_section clearfix">
+
+            <!-- Breadcrumbs -->
+
+
+
+            <!-- Main Content -->
+            <div class="row">
+                <div class="col-md-12" id="load_data">
+                    @Html.Action("PartialItemCart", "ShoppingCart")
+                </div>
+                <div class="col-md-12">
+                    <div class="text-right">
+                        <a href="#" class="btn btn-danger btnDeleteAll" style="">Xóa hết</a>
+                        <a href="#" class="btn btn-success">Thanh toán</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*@section scripts{
+    <script src="~/Content/assets/js/contact_custom.js"></script>
+}*@
+

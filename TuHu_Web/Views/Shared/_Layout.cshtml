@@ -1,39 +1,244 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>Đặt Gà Rán KFC, Giao Hàng Tận Nơi | KFC Việt Nam</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="~/Data/fonts/icomoon/style.css">
+    <link rel="shortcut icon" href="https://www.hoteljob.vn/uploads/images/2021/09/30-10/228490199_4295146113871701_229002798568710322_n.jpg" />
+
+    <link rel="stylesheet" href="~/Data/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Data/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Data/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/Data/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Data/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Data/css/aos.css">
+
+    <link rel="stylesheet" href="~/Data/css/style.css">
+
 </head>
-<body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
+<style>
+    .my-top {
+        display: inline-block;
+        color: #000 !important;
+        text-decoration: none;
+    }
+
+        .my-top::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #000;
+            transition: width .3s;
+        }
+
+        .my-top:hover::after {
+            width: 100%;
+        }
+    /* width */
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: red;
+        border-radius: 10px;
+    }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b30000;
+        }
+</style>
+<body style="overflow-x: hidden">
+
+    <div class="site-wrap">
+
+
+        <div class="site-navbar bg-white py-2 border-bottom border-dark">
+
+            <div class="search-wrap">
+                <div class="container">
+                    <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+                    <form action="#" method="post">
+                        <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
+                    </form>
+                </div>
+            </div>
+            @* header *@
+            <div class="container p-3">
+                <div class="d-flex align-items-center justify-content-between ml-1" style="padding-left: 10px;">
+                    <div class="logo">
+                        <div class="site-logo">
+                            <a href="@Url.Action("Index", "Home")" class="js-logo-clone"> <img src="https://tuhubread.com.vn/wp-content/uploads/2022/07/tuhu-logo-moi-1-01.png" class="img-circle" alt="User Image" style="height:80px; margin-right: 10px; margin-bottom: 5px " /></a>
+                        </div>
+                    </div>
+                    <div class="main-nav d-none d-lg-block">
+                        <nav class="site-navigation text-right text-md-center" role="navigation">
+                            <ul class="site-menu js-clone-nav d-none d-lg-block">
+                                <li>
+                                    <a href="@Url.Action("Menu", "Home")" class="my-top header-item" style="font-weight: 700; font-size: 20px; cursor: pointer;">Món Ăn</a>
+                                </li>
+                                <li><a href="@Url.Action("KhuyenMai", "Home")" class="my-top" style="font-weight: 700; font-size: 20px; cursor: pointer;">KHUYẾN MÃI</a></li>
+                                <li><a href="@Url.Action("GioiThieu", "Home")" class="my-top" style="font-weight: 700; font-size: 20px; cursor: pointer;">VỀ NHÀ HÀNG</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="icons">
+                        <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+                        <a href="#" class="icons-btn d-inline-block"><span class="icon-heart-o"></span></a>
+                        <a href="@Url.Action("Cart", "Home")" class="icons-btn d-inline-block bag">
+                            <span class="icon-shopping-bag"></span>
+                             @if (ViewBag.quantityCart > 0)
+ {<span style="position: absolute; top: -17px; right: -12px; color: red; font-size: 20px; font-weight: 700; border-radius: 100%; ">@ViewBag.quantityCart</span>
+     }
+                        </a>
+                        <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <div>
+            <div style="">
+                @RenderBody()
+            </div>
+
+            <footer class="site-footer custom-border-top">
+                <div class="container">
+
+
+                </div>
+            </footer>
+        </div>
+
+        <!-- footer-->
+        <footer id="footer" class="footer" style="background: url(https://tuhubread.com.vn/wp-content/themes/themename/img/Layer48.jpg);background-size: cover;background-repeat: no-repeat;">
+            <div class="container ">
+                <div class="f-widget row ">
+                    <div class="col-md-8">
+                        <div id="black-studio-tinymce-2" class="widget widget_black_studio_tinymce footer_desc">
+                            <div class="textwidget">
+                                <p style="text-align: left;">Đồng hành cùng thực khách trong nhiều năm,</p>
+                                <p style="text-align: left;">Tuhu Bread luôn cố gắng mang đến những chiếc bánh mì thơm ngon, nóng giòn.</p>
+                            </div>
+                        </div><div id="custom_html-2" class="widget_text widget widget_custom_html ">
+                            <div class="textwidget custom-html-widget">
+                                <div class="contact_footer">
+                                    <ul>
+                                        <li>
+                                            <span class="icon">
+                                                <i class="fas fa-phone"></i>
+                                            </span>
+                                            <span class="cnt">
+                                                <a href="tell:1900999994">1900 9999 94</a>
+                                                <a href=""></a>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="icon">
+                                                <i class="fas fa-envelope"></i>
+                                            </span>
+                                            <span class="cnt">
+                                                <a href="mailto:tuhu.info@gmail.com">tuhubread.infor@gmail.com</a>
+
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="icon">
+                                                <i class="fas fa-clock"></i>
+                                            </span>
+                                            <span class="cnt">
+                                                <span>Giờ mở cửa: 5:45 - 24:00 tất cả các ngày trong tuần</span>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div id="custom_html-3" class="widget_text widget widget_custom_html ">
+                            <div class="footer-title"><span>Kết nối với chúng tôi</span></div><div class="textwidget custom-html-widget">
+                                <div class="social_footer">
+                                    <ul>
+                                        <li>
+                                            <a href="https://www.facebook.com/Tuhubread/" target="_blank" rel="noopener">
+                                                <span class="glyphicon glyphicon-thumbs-up"></span> Facebook
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.instagram.com/tuhubread.vn/" target="_blank" rel="noopener">
+                                                <span class="glyphicon glyphicon-camera"></span> Instagram
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.tiktok.com/tuhu_bread?lang=vi-VN" target="_blank" rel="noopener">
+                                                TikTok
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><div id="custom_html-4" class="widget_text widget widget_custom_html " style="margin-right: 300px;">
+                            <div class="textwidget custom-html-widget">
+                                <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div>
+                                <script async="" defer="" crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&amp;version=v14.0" nonce="MQpP3rNa"></script>
+                                <div class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/Tuhubread" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="adapt_container_width=true&amp;app_id=&amp;container_width=360&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2FTuhubread&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false&amp;tabs=&amp;width="><span style="vertical-align: bottom; width: 340px; height: 130px;"><iframe name="f36fc8f98380814" width="1000px" height="1000px" data-testid="fb:page Facebook Social Plugin" title="fb:page Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v14.0/plugins/page.php?adapt_container_width=true&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df2aa29365ad168%26domain%3Dtuhubread.com.vn%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Ftuhubread.com.vn%252Ff1042058d42534c%26relation%3Dparent.parent&amp;container_width=360&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2FTuhubread&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false&amp;tabs=&amp;width=" style="border: none; visibility: visible; width: 340px; height: 130px;" class=""></iframe></span></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <div class="container">
+                        <div class="f-widget row ">
+                            <div class="col-md-12">
+                                <div id="black-studio-tinymce-3" class="widget widget_black_studio_tinymce ">
+                                    <div class="textwidget">
+                                        <p><span class="emoji-sizer emoji-outer ">®</span><span class="text"> 2015 TUHU Group.JSC. All rights reserverd</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row pt-5 mt-5 text-center">
+                    <div class="col-md-12">
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This code is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" class="text-danger">Garpherm</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+
+                </div>
+            </div>
         </footer>
     </div>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Data/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Data/js/jquery-ui.js"></script>
+    <script src="~/Data/js/popper.min.js"></script>
+    <script src="~/Data/js/bootstrap.min.js"></script>
+    <script src="~/Data/js/owl.carousel.min.js"></script>
+    <script src="~/Data/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Data/js/aos.js"></script>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script src="~/Data/js/main.js"></script>
+    <script src="~/Scripts/jsShopping.js"></script>
+
+
 </body>
 </html>
