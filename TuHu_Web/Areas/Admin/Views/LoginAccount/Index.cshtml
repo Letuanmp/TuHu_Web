@@ -50,7 +50,7 @@
                     <div class="input-group mb-3" style="display: grid; grid-template-columns: auto auto">
                         <b style="margin:0px 0px 5px 12px;padding:1px 2px 1px 2px">Mật khẩu</b>
                         <div>
-                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                            @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
                             @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
                         </div>
                      
