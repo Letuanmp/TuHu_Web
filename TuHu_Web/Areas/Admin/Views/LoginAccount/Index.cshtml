@@ -3,23 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | Log in (v2)</title>
+    <title>Form Đăng nhập Admin</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="~/Content/assets/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/plugins/fontawesome-free/css/all.min.css">
     <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="~/Content/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="~/Content/assets/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/Content/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-color:antiquewhite">
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <a href="#" class="h1"><b>Admin Zune.zx</b></a>
+            <div class="card-header text-center" style="margin-bottom: 20px; text-align: center; border: 2px solid black;background-color:white;border-radius:5px">
+                <p style="font-size:25px;color:red;border:10px 0px 10px 0px"><b>Admin BanhMyTUHU</b></p>
             </div>
 
             @model TuHu_Web.Models.Login
@@ -28,24 +28,33 @@
 
             }
 
-            <div class="card-body">
-                <p class="login-box-msg">Đăng nhập trang quản lý TuHu Breads</p>
+            <div class="card-body" style="border: 2px solid black; background-color:white; border-radius:10px">
+                <p class="login-box-msg" style="font-size:20px;margin-top:10px">Đăng nhập trang quản lý TuHu Breads</p>
                 @using (Html.BeginForm("Index", "LoginAccount", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
-                    <div class="input-group mb-3">
-                        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @placeholder = "Tên tài khoản" })
-                        @Html.ValidationMessageFor(x => x.UserName, "", new { @class = "text-danger" })
+                    <div class="input-group mb-3" style="display: grid; grid-template-columns: auto auto">
+                        <b style="margin:0px 0px 5px 10px;padding:1px 2px 1px 2px">Tài khoản</b>
+                        <div>
+                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @placeholder = "Tên tài khoản" })
+                            @Html.ValidationMessageFor(x => x.UserName, "", new { @class = "text-danger" })
+                        </div>
+                        
                         @*<div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-envelope"></span>
                                 </div>
                             </div>*@
                     </div>
-                    <div class="input-group mb-3">
-                        @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
-                        @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                    <div class="input-group mb-3" style="display: grid; grid-template-columns: auto auto">
+                        <b style="margin:0px 0px 5px 12px;padding:1px 2px 1px 2px">Mật khẩu</b>
+                        <div>
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                        </div>
+                     
+
                         @*<input type="password" class="form-control" placeholder="Password">*@
                         @*<div class="input-group-append">
                                 <div class="input-group-text">
@@ -53,10 +62,10 @@
                                 </div>
                             </div>*@
                     </div>
-                    <div class="row">
+                    <div class="row" style=" display: flex; justify-content: center; align-items: center; ">
                         <!-- /.col -->
                         <div class="col-6">
-                            <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+                            <button type="submit" class="btn btn-primary btn-block" style="background-color : aquamarine; margin-top: 20px;font-size:18px;padding:5px 8px 5px 8px">Đăng nhập</button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -65,7 +74,7 @@
                 <!-- /.social-auth-links -->
 
                 <p class="mb-1">
-                    <a href="#">Quên mật khẩu?</a>
+                    <a href="#" style="color:black;font-size:14px;margin-left:250px">Quên mật khẩu?</a>
                 </p>
                 @*<p class="mb-0">
                         <a href="register.html" class="text-center">Register a new membership</a>
@@ -79,10 +88,10 @@
     </div>
     <!-- /.login-box -->
     <!-- jQuery -->
-    <script src="~/Content/assets/plugins/jquery/jquery.min.js"></script>
+    <script src="~/Content/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="~/Content/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Conten/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="~/Content/assets/dist/js/adminlte.min.js"></script>
+    <script src="~/Content/dist/js/adminlte.min.js"></script>
 </body>
 </html>
