@@ -221,6 +221,71 @@ namespace TuHu_Web.Controllers
         {
             return View();
         }
+        public ActionResult TuyenDung()
+        {
+            return View();
+        }
+        public ActionResult Bread()
+        {
+            List<Product> foods = new List<Product>();
+
+            foods = db.Products.ToList();
+            var valueSearch = "Bánh";
+            if (foods!=null)
+            {
+               List<Product> foodspage = foods.FindAll(x => x.Name_Product.ToLower().Contains(valueSearch.Trim().ToLower()));
+                return View(foodspage);
+            }
+
+            return View();
+            
+        }
+        public ActionResult Combo()
+        {
+            List<Product> foods = new List<Product>();
+
+            foods = db.Products.ToList();
+            var valueSearch = "Combo";
+            if (foods != null)
+            {
+                List<Product> foodspage = foods.FindAll(x => x.Name_Product.ToLower().Contains(valueSearch.Trim().ToLower()));
+                return View(foodspage);
+            }
+
+            return View();
+
+        }
+        public ActionResult Drink()
+        {
+            List<Product> foods = new List<Product>();
+
+            foods = db.Products.ToList();
+            var valueSearch = "Trà";
+            if (foods != null)
+            {
+                List<Product> foodspage = foods.FindAll(x => x.Name_Product.ToLower().Contains(valueSearch.Trim().ToLower()));
+                return View(foodspage);
+            }
+
+            return View();
+
+        }
+
+        public ActionResult SandWich()
+        {
+            List<Product> foods = new List<Product>();
+
+            foods = db.Products.ToList();
+            var valueSearch = "Sandwich";
+            if (foods != null)
+            {
+                List<Product> foodspage = foods.FindAll(x => x.Name_Product.ToLower().Contains(valueSearch.Trim().ToLower()));
+                return View(foodspage);
+            }
+
+            return View();
+
+        }
 
     }
 }

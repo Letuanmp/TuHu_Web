@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "SandWich";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top: 200px; margin-left: 20px; margin-right: 20px;">
+
+    @foreach (var product in Model)
+    {
+        <div class="col-md-3 mb-3 item">
+            <a href="@Url.Action("SandWich", "Home", new { id = product.Id_Product })">
+                <div class="card" style="display: flex; flex-direction: column; height: 450px; box-shadow: 0 1px 6px 0 rgba(0,0,0,.2); border-radius: 4px; background-color: white; cursor:pointer">
+                    <div class="bg-image" style="height: 280px; overflow: hidden">
+                        <img src="~/Uploads/@product.Image" style="width: 100%" class="zoom" />
+                    </div>
+                    <div class="card-body">
+                        <div style="display: flex; margin-top: -10px; justify-content: space-between;">
+                            <span style="color: #343a40; font-weight:600; font-size:18px" id="comboText">@product.Name_Product</span>
+                            <span style="color: #343a40; font-weight:700; font-size:18px"> @TuHu_Web.Common.Common.FormatNumber(product.Price_Product, 0) </span>
+                        </div>
+                        <div style=" margin-bottom: 30px;">
+                            <span style="color: #333;" id="des">@product.Description</span>
+                        </div>
+                        <div style="display: flex; justify-content: center; margin-top: 50px">
+                            <a href="@Url.Action("AddCart", "Home", new { id = product.Id_Product , view = "SandWich" })" style=" margin-top: 50px;padding: 8px 12px; width: 80%; background-color: #e4002b; text-align: center; color: white; font-size: 20px; font-weight: 700; border-radius: 40px; position: absolute; bottom: 30px "> Thêm</a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+<script>
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
+
+const tabs = $$(".tab-item");
+                const panes = $$(".tab-pane");
+
+                const tabActive = $(".tab-item.active");
+const line = $(".tabs .line");
+
+requestIdleCallback(function () {
+                    line.style.left = tabActive.offsetLeft + "px";
+                    line.style.width = tabActive.offsetWidth + "px";
+                });
+
+tabs.forEach((tab, index) => {
+    const pane = panes[index];
+
+                tab.onclick = function()
+                {
+        $(".tab-item.active").classList.remove("active");
+        $(".tab-pane.active").classList.remove("active");
+
+                    line.style.left = this.offsetLeft + "px";
+                    line.style.width = this.offsetWidth + "px";
+
+                    this.classList.add("active");
+                    pane.classList.add("active");
+                };
+});
+    document.addEventListener("DOMContentLoaded", function () {
+
+
+        var productNames = document.querySelectorAll(".item .card-body #comboText");
+
+        productNames.forEach(function (productName) {
+            var originalText = productName.innerText;
+
+            // Check if the length is greater than 12
+            if (originalText.length > 20) {
+                // Truncate and add ellipsis
+                var truncatedText = originalText.substring(0, 20) + "...";
+                productName.innerText = truncatedText;
+            }
+        });
+
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+
+
+        var productNames = document.querySelectorAll(".item .card-body #des");
+
+        productNames.forEach(function (productName) {
+            var originalText = productName.innerText;
+
+            // Check if the length is greater than 12
+            if (originalText.length > 35) {
+                // Truncate and add ellipsis
+                var truncatedText = originalText.substring(0, 35) + "...";
+                productName.innerText = truncatedText;
+            }
+        });
+
+    });
+
+</script>
+
